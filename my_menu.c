@@ -41,8 +41,17 @@ typedef struct DataNode
 /* init the cmd menu */ 
 static tDataNode head[]=
 {
-    {"help","this is help cmd!",Help,&head[1]},
-    {"version","cmd program v1.1",NULL,NULL}
+    {
+        "help","this is help cmd!",Help,&head[1]
+        
+    },
+    {
+        "version","cmd program v1.1",NULL,&head[2]
+        
+    },
+    {
+        "author","By willszp",NULL,NULL
+    }
 };
 
 
@@ -56,7 +65,7 @@ main()
         tDataNode *p = head;
         while(p != NULL)
         {    
-            if( p != NULL)
+            if(!strcmp(p->cmd,cmd))
             {
                 printf("%s - %s\n", p->cmd, p->desc); 
                 if(p->handler != NULL) 
